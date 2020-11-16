@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%; 
+    height: fit-content;
+    background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/34/17/kUoKmL.jpg');
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+}
+
+footer {
+    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
