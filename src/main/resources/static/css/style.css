@@ -19,3 +19,16 @@ footer {
     bottom: 0;
     width: 100%;
 }
+form{
+
+    border-radius: 5%;
+    border-color: white;
+    margin-top: 2%;
+    width: 25em;
+    text-align: center;
+    border: 2px solid ;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 12px;
+    background-color: #0d1626be;
+}
