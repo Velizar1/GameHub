@@ -9,20 +9,29 @@ import java.util.HashSet;
 @Entity
 @Table(name = "game_events")
 public class GameEvent extends BaseEntity {
-    private GameName gameName;
+
     private String description;
+    @Column(name = "players",nullable = false)
     private Integer numberOfPlayers;
     private String devision;
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL)
+    private Game game;
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL)
     private User owner;
     @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<User> players;
 
+
     public GameEvent() {
         players = new HashSet<User>();
     }
+
+
 
     public Set<User> getPlayers() {
         return players;
@@ -31,13 +40,13 @@ public class GameEvent extends BaseEntity {
     public void setPlayers(Set<User> players) {
         this.players = players;
     }
-    @Column(name = "name",nullable = false)
-    public GameName getGameName() {
-        return gameName;
+
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameName(GameName gameName) {
-        this.gameName = gameName;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     @Column(name = "description", columnDefinition = "TEXT")
@@ -49,7 +58,6 @@ public class GameEvent extends BaseEntity {
         this.description = description;
     }
 
-    @Column(name = "players",nullable = false)
     public Integer getNumberOfPlayers() {
         return numberOfPlayers;
     }
