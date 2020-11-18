@@ -26,12 +26,9 @@ public class GameEvent extends BaseEntity {
     @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<User> players;
 
-
     public GameEvent() {
         players = new HashSet<User>();
     }
-
-
 
     public Set<User> getPlayers() {
         return players;

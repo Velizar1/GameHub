@@ -49,3 +49,19 @@ form{
   bottom: 0;
   width: 100%;
 }
+
+.add-form{
+    width: 50%;;
+}
+.name{
+
+    font-size: 30px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+.name-label{
+
+    display: inline;
+    font-size: 15px;
+    color: white;
+}
