@@ -17,13 +17,11 @@ public class GameEvent extends BaseEntity {
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Game game;
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User owner;
-    @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = User.class,  fetch = FetchType.LAZY)
     private Set<User> players;
 
     public GameEvent() {

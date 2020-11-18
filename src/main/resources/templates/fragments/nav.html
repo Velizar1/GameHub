@@ -1,12 +1,9 @@
 <th:block>
 
     <ul class="nav justify-content-end">
-
-
-        <li class=" float-left" style="float: left">
+        <li class=" float-left" style="float:left">
             <a style="color:rgb(255, 255, 255);" th:href="@{/}" class="nav-link text-light">Game Hub</a>
         </li>
-
         <th:block th:if="${session.isEmpty()}">
             <li class="nav-item">
                 <a class="nav-link" style="color:rgb(255, 255, 255);" th:href="@{/user/login}">Login</a>
@@ -17,7 +14,7 @@
         </th:block>
         <th:block th:unless="${session.isEmpty()}">
             <li class="nav-item">
-                <a class="nav-link active" style="color:rgb(255, 255, 255);" href="#">Add Event</a>
+                <a class="nav-link active" style="color:rgb(255, 255, 255);" th:href="@{/game/add}">Add Event</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" style="color:rgb(255, 255, 255);" th:href="@{/user/logout}">Logout</a>

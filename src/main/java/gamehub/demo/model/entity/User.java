@@ -13,7 +13,7 @@ public class User extends BaseEntity {
     private String email;
     private Boolean deleted;
 
-    @ManyToMany(mappedBy = "players", targetEntity = GameEvent.class,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "players", targetEntity = GameEvent.class, fetch = FetchType.LAZY)
     private Set<GameEvent> gameEvents;
 
     public User() {

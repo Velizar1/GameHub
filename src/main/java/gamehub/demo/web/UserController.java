@@ -49,6 +49,7 @@ public class UserController {
             return "redirect:login";
         }
         httpSession.setAttribute("user",userLoginBindingModel);
+        httpSession.setAttribute("username",userLoginBindingModel.getUserName());
         return "redirect:/home";
     }
     @GetMapping("/logout")

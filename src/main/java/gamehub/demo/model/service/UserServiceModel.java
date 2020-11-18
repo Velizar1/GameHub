@@ -1,23 +1,27 @@
 package gamehub.demo.model.service;
 
-import org.hibernate.validator.constraints.Length;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-
-public class UserServiceModel {
-    @NotNull
-    @Length(min = 2,max = 10,message = "Username must be between 2 and 10 symbols.")
+public class UserServiceModel extends BaseServiceModel {
     private String userName;
-    @NotNull
-    @Length(min = 2,max = 10,message = "Password must be between 2 and 10 symbols.")
+
     private String password;
-    @Email
     private String email;
     private Boolean deleted;
+    private Set<GameAddServiceModel> gameEvents;
 
     public UserServiceModel() {
+        gameEvents=new HashSet<>();
         this.deleted=false;
+    }
+
+    public Set<GameAddServiceModel> getGameEvents() {
+        return gameEvents;
+    }
+
+    public void setGameEvents(Set<GameAddServiceModel> gameEvents) {
+        this.gameEvents = gameEvents;
     }
 
     public String getUserName() {

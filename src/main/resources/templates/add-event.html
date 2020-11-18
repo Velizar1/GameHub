@@ -19,41 +19,28 @@
 
 <body>
 <nav class="p-2" style="background-color:#1a031d62;">
-    <ul class="nav justify-content-end">
-
-        <li class="nav-item">
-            <a class="nav-link" style="color:rgb(255, 255, 255);" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:rgb(255, 255, 255);" href="#">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" style="color:rgb(255, 255, 255);" href="#">Add Event</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:rgb(255, 255, 255);" href="#">Logout</a>
-        </li>
-    </ul>
+    <th:block th:include="~{/fragments/nav}"></th:block>
 </nav>
-<main>
-    <form class="was-validated add-form" th:action="@{/game/add}" method="POST">
+<main class="text-center">
+    <form class="d-inline-block was-validated text-center add-form "
+          th:action="@{/game/add}" method="POST" style="margin-bottom: 100px;">
 
-        <div class="w-100 ">
-            <div class="mb-3 w-75 text-center input-field">
+        <div class="text-center " >
+            <div class="w-75 d-inline-block">
                 <label class="name">Game Event</label>
                 <select class="custom-select" name="gameName" required>
                     <option value="">Chose your game</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option th:each="o : ${T(gamehub.demo.model.entity.GameName).values()}"
+                            th:text="${#strings.capitalize(#strings.toLowerCase(o))}" th:value="${o}">One</option>
+
                 </select>
                 <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>
 
-            <div class="mb-3 w-75">
-                <label name="owner" class="name-label">Enter your in-game username</label>
+            <div class="d-inline-block mb-3 w-75">
+                <label  class="float-left name-label">Enter your in-game username</label>
                 <div class="input-group mt-2 is-invalid">
-                    <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend"
+                    <input type="text" name="owner" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend"
                            required>
                 </div>
                 <div class="invalid-feedback">
@@ -61,10 +48,10 @@
                 </div>
             </div>
 
-            <div class="mb-3 w-75">
-                <label  name="devision" class="name-label">Enter needed devision</label>
+            <div class="d-inline-block mb-3 w-75">
+                <label   class="float-left name-label">Enter needed devision</label>
                 <div class="input-group mt-2 is-invalid">
-                    <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend"
+                    <input type="text" name="devision" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend"
                            required>
                 </div>
                 <div class="invalid-feedback">
@@ -72,8 +59,8 @@
                 </div>
             </div>
 
-            <div class="mb-3 w-75">
-                <label  name="devision" class="name-label">Enter number of players</label>
+            <div class="d-inline-block mb-3 w-75">
+                <label   class="float-left name-label">Enter number of players</label>
                 <div class="input-group mt-2 is-invalid">
                     <input type="number" min="1" max="20" name="numberOfPlayers" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend"
                            required>
@@ -83,43 +70,44 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="w-100 mb-3 d-inline-block">
                 <div class="w-100">
-                    <label for="startDate" class="name-label">Stars on</label>
+                    <label for="startDate" class="name-label ">Stars on</label>
                 </div>
                 <input id="startDate" name="startDate" type="datetime-local"
-                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" data-large-mode="true" />
+                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7 d-inline-block" data-large-mode="true" />
 
             </div>
-            <div class="input-group mb-3 justify-content-center">
+            <div class="d-inline-block input-group mb-3 justify-content-center">
 
                 <small class="text-danger">The date cannot be in the future!</small>
 
             </div>
-            <div class="input-group mb-3 ">
+            <div class="d-inline-block w-100 mb-3 ">
 
                 <div class="w-100">
                     <label for="dueDate" class="name-label">Due date</label>
                 </div>
                 <input id="dueDate" name="dueDate" type="datetime-local"
-                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" data-large-mode="true" />
+                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7 d-inline-block" data-large-mode="true" />
             </div>
             <div class="input-group mb-3 justify-content-center">
 
                 <small class="text-danger">The date cannot be in the past!</small>
 
             </div>
-            <div class="mb-3 w-75">
-                <label class="name-label">Some more information</label>
+            <div class="d-inline-block mb-3 w-75">
+                <label class="name-label float-left">Some more information</label>
                 <label for="validationTextarea">Textarea</label>
-                <textarea class="form-control is-invalid" id="validationTextarea"
+                <textarea name="description" class="form-control is-invalid" id="validationTextarea"
                           placeholder="Required example textarea" required></textarea>
                 <div class="invalid-feedback">
                     Please enter a message in the textarea.
                 </div>
             </div>
-            <button class="btn btn-primary border-0 bg-dark btn-lg" type="submit">Add event</button>
+
         </div>
+        <button class="btn btn-primary border-0 bg-dark btn-lg" type="submit">Add event</button>
     </form>
 </main>
 <footer class="footer p-3 text-center" style="background-color:#1a031d38;">
