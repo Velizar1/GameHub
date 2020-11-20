@@ -1,5 +1,6 @@
 package gamehub.demo.service;
 import gamehub.demo.model.service.GameAddServiceModel;
+import gamehub.demo.model.view.EventViewModel;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -11,4 +12,6 @@ public interface GameService {
 
 
     List<GameAddServiceModel> findAll();
+
+    EventViewModel findById(String id);
 }

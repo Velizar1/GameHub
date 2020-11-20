@@ -1,4 +1,4 @@
-package gamehub.demo.model.binding;
+package gamehub.demo.model.view;
 
 import gamehub.demo.model.service.GameServiceModel;
 import gamehub.demo.model.service.UserServiceModel;
@@ -6,7 +6,7 @@ import gamehub.demo.model.service.UserServiceModel;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class EventBindingModel {
+public class EventViewModel {
     private String id;
     private String description;
     private Integer numberOfPlayers;
@@ -17,7 +17,7 @@ public class EventBindingModel {
     private UserServiceModel owner;
     private Set<UserServiceModel> players;
 
-    public EventBindingModel() {
+    public EventViewModel() {
     }
 
     public String getDescription() {
@@ -92,3 +92,4 @@ public class EventBindingModel {
         this.id = id;
     }
 }
+

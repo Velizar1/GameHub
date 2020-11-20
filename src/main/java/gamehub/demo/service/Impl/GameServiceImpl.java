@@ -7,6 +7,7 @@ import gamehub.demo.model.entity.GameName;
 import gamehub.demo.model.service.GameAddServiceModel;
 import gamehub.demo.model.service.GameServiceModel;
 import gamehub.demo.model.service.UserServiceModel;
+import gamehub.demo.model.view.EventViewModel;
 import gamehub.demo.repository.GameEventRepository;
 import gamehub.demo.repository.GameRepository;
 import gamehub.demo.service.GameService;
@@ -76,5 +77,12 @@ public class GameServiceImpl implements GameService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public EventViewModel findById(String id) {
+         return this.gameEventRepository
+                 .findById(id)
+                 .map(x->this.modelMapper.map(x,EventViewModel.class))
+                 .orElse(null);
 
+    }
 }

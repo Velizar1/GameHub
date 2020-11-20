@@ -45,7 +45,7 @@
                 <p th:text="|Devision : ${e.getDevision()}|" class="card-text"></p>
                 <p th:text="|Players needed : ${e.getNumberOfPlayers()}|" class="card-text"></p>
                 <p th:text="|Starts on : ${e.getStartDate()}|" class="card-text"></p>
-                <a href="#" class="btn btn-primary border-0 bg-dark btn-lg">Details</a>
+                <a th:href="@{/game/detail/(id = ${e.getId()})}" class="btn btn-primary border-0 bg-dark btn-lg">Details</a>
             </div>
         </div>
     </div>
