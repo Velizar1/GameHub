@@ -29,6 +29,9 @@ public class GameEventController {
 
     @GetMapping("/add")
     public String addEvent(Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("user")==null){
+            return "redirect:/";
+        }
         if(model.getAttribute("gameAddBindingModel")==null){
             model.addAttribute("gameAddBindingModel",new GameAddBindingModel());
         }
@@ -51,10 +54,12 @@ public class GameEventController {
         return "redirect:/home";
     }
     @GetMapping("/detail")
-    public ModelAndView modelAndView(@RequestParam("id") String id, ModelAndView modelAndView){
+    public String modelAndView(@RequestParam("id") String id, Model model ,HttpSession httpSession){
 
-        modelAndView.setViewName("event-detail");
-        modelAndView.addObject("event",this.gameService.findById(id));
-        return modelAndView;
+        if(httpSession.getAttribute("user")==null){
+            return "redirect:/";
+        }
+        model.addAttribute("event",this.gameService.findById(id));
+        return "event-detail";
     }
 }

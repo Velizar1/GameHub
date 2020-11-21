@@ -1,7 +1,6 @@
-
 html {
-    
     height: 100%;
+    width: 100%;
   }
 body {
     position: relative;
@@ -23,6 +22,8 @@ body {
     min-height: 2em;
 }
 .container-style{
+    margin-right: 5%;
+    margin-left: 5%;
     width: 70%;
     color: white;
     border-radius: 12px;
@@ -48,7 +49,7 @@ form{
     border-radius: 12px;
     border: 2px solid ;
     background-color:  #0d162696;
-    min-height: 100%;
+    height: 100%;
 }
 .footer {
   position: absolute;
@@ -72,9 +73,72 @@ form{
     color: white;
 }
 .detail{
-    min-height: 30em;
+    height: 30em;
     background-size:contain;
     background-repeat:no-repeat;
     background-size: 100% 100%;
-    width: auto;
+    width: 60%;
+
+}
+#username{
+    width: 50%;
+}
+#last{
+    bottom: -25%;
+}
+#pool{
+    width: 70%;
+}
+.outside-div{
+    width: 70%;
+}
+@media screen and (max-width: 361px) {
+    .outside-div{
+        width: 90%;
+    }
+    form{
+        width: 100%;
+    }
+    .detail {
+    height: auto;
+    }
+    #pool{
+        width: 100%;
+    }
+    .container-style {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .detail{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+
+    }
+    html{
+        width: 100%;
+    }
+    #username{
+        display: inline;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    #last{
+        bottom: -10%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .outside-div{
+        width: 90%;
+    }
+    .detail{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+
+    }
+    html{
+        width: 100%;
+    }
+
 }

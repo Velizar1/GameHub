@@ -23,7 +23,7 @@
 </nav>
 <main class="text-center">
 
-    <div style="width: 70%;margin-bottom: 100px;"
+    <div id="pool" style="margin-bottom: 100px;"
          th:object="${events}" class="btn-container-style text-center mt-5 d-inline-block modal-dialog-scrollable">
 
 
@@ -37,7 +37,7 @@
             </select>
         </div>
 
-        <div th:each="e : ${events}" class=" d-inline-block mr-5 ml-5 text-left mt-5 container-style" style="width: 18rem;">
+        <div th:each="e : ${events}" class=" d-inline-block text-left mt-5 container-style" style="width: 18rem;">
             <img th:src="@{${e.getGame().imageUrl}}"
                  class="card-img-top" style="height: 200px;" alt="...">
             <div class="card-body">

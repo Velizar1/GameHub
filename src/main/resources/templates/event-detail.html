@@ -22,17 +22,26 @@
     <th:block th:include="~{/fragments/nav}"></th:block>
 </nav>
 <main class="text-center">
-    <div style="width: 70%;margin-bottom: 100px;"
-         th:object="${event}" class="btn-container-style text-center mt-5 d-inline-block modal-dialog-scrollable">
-        <div  class="d-inline-block mr-5 ml-5 text-left mt-5 container-style detail" th:style="|background-image:url(*{getGame().getImageUrl()}); width: 60%;|">
-            <div class="card-body inside-el" style="opacity: 1">
+
+    <div style="margin-bottom: 100px;margin-top: 5%"
+         th:object="${event}" class="btn-container-style text-center d-inline-block modal-dialog-scrollable outside-div">
+        <div class="d-inline-block  text-left mt-5 container-style detail"
+             th:style="|background-image:url(*{getGame().getImageUrl()});|">
+            <div class="card-body inside-el" style="opacity: 1;">
                 <h5 th:text="|Owner *{getOwner().userName}|" class="card-title">Card title</h5>
                 <p th:text="|Devision : *{getDevision()}|" class="card-text"></p>
                 <p th:text="|Players needed : *{getNumberOfPlayers()}|" class="card-text"></p>
                 <p th:text="|Starts on : *{getStartDate()}|" class="card-text"></p>
                 <p th:text="|Ends on : *{getDueDate()}|" class="card-text"></p>
                 <p th:text="|Description : *{getDescription()}|" class="card-text"></p>
-                <a href="#" class="btn btn-primary border-0 bg-dark btn-lg">I'm in</a>
+                <div style="position:relative; " id="last">
+                    <p style="color: lawngreen" class="card-text">Your nick name :</p>
+                    <input type="text" name="player" id="username" class="form-control is-invalid d-inline-block"
+                           aria-describedby="validatedInputGroupPrepend"
+                           required>
+                    <a href="#" class="btn btn-primary border-0 bg-dark btn-lg ml-3"
+                       style="padding: 0.23em;margin-bottom: 4.5px">I'm in</a>
+                </div>
             </div>
         </div>
     </div>

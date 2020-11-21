@@ -34,7 +34,7 @@
                     <input th:field="*{userName}" type="text" name="userName" class="form-control " id="validationServer01" value="Mark" required>
                     <div style="color: white;" class="valid-feedback">
                         <small th:each="e : ${#fields.errors('userName')}" th:text="${e}"
-                               style="color: red;font-size:15px">Looks good!</small>
+                               style="color: #ff0000;font-size:15px">Looks good!</small>
                     </div>
                 </div>
                 <div class="col-md-12 col-md-6 mb-3 d-inline-block" style="display: inline-block;">
@@ -53,19 +53,6 @@
         <th:block th:include="~{/fragments/footer}"></th:block>
     </footer>
 </body>
-<style>
-    form {
-        border-radius: 5%;
-        border-color: white;
-        margin-top: 2%;
-        width: 25em;
-        text-align: center;
-        border: 2px solid;
-        padding-bottom: 20px;
-        padding-top: 20px;
-        border-radius: 12px;
-        background-color: #0d1626be;
-    }
-</style>
+
 
 </html>

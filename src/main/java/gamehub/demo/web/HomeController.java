@@ -6,11 +6,14 @@ import gamehub.demo.model.binding.UserAddBindingModel;
 import gamehub.demo.service.GameService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import javax.swing.text.html.HTML;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,21 +31,27 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index(HttpSession httpSession){
+        if(httpSession.getAttribute("user")!=null){
+            return "redirect:home";
+        }
         return "index";
     }
 
     @GetMapping("/home")
-    public ModelAndView homePage(@ModelAttribute("userAddBindingModel") UserAddBindingModel userAddBindingModel,
-                                 ModelAndView modelAndView){
+    public String homePage(@ModelAttribute("userAddBindingModel") UserAddBindingModel userAddBindingModel,
+                                 Model model,HttpSession httpSession){
+
+        if(httpSession.getAttribute("user")==null){
+            return "redirect:/";
+        }
 
         List <EventBindingModel> events = this.gameService.findAll().stream()
                 .map(g->this.modelMapper.map(g,EventBindingModel.class))
                 .collect(Collectors.toList());
 
-        modelAndView.addObject("events",events);
-        modelAndView.setViewName("home");
-        return modelAndView;
+        model.addAttribute("events",events);
+        return "home";
     }
 
 }
