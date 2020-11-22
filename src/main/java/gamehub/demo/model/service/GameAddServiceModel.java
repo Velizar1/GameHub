@@ -1,5 +1,7 @@
 package gamehub.demo.model.service;
 
+import gamehub.demo.model.entity.Player;
+
 import java.util.Set;
 
 import java.time.LocalDateTime;
@@ -12,8 +14,8 @@ public class GameAddServiceModel extends BaseServiceModel{
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
     private GameServiceModel game;
-    private UserServiceModel owner;
-    private Set<UserServiceModel> players;
+    private PlayerServiceModel owner;
+    private Set<PlayerServiceModel> players;
 
     public GameAddServiceModel() {
         players=new HashSet<>();
@@ -67,20 +69,20 @@ public class GameAddServiceModel extends BaseServiceModel{
         this.description = description;
     }
 
-    public UserServiceModel getOwner() {
+    public PlayerServiceModel getOwner() {
         return owner;
     }
 
-    public void setOwner(UserServiceModel owner) {
+    public void setOwner(PlayerServiceModel owner) {
         this.owner = owner;
     }
 
 
-    public Set<UserServiceModel> getPlayers() {
+    public Set<PlayerServiceModel> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Set<UserServiceModel> players) {
+    public void setPlayers(Set<PlayerServiceModel> players) {
         this.players = players;
     }
 }

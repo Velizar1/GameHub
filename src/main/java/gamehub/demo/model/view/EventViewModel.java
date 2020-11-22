@@ -1,7 +1,10 @@
 package gamehub.demo.model.view;
 
 import gamehub.demo.model.service.GameServiceModel;
+import gamehub.demo.model.service.PlayerServiceModel;
 import gamehub.demo.model.service.UserServiceModel;
+import gamehub.demo.repository.PlayerRepository;
+import gamehub.demo.service.PlayerService;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,8 +17,8 @@ public class EventViewModel {
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
     private GameServiceModel game;
-    private UserServiceModel owner;
-    private Set<UserServiceModel> players;
+    private PlayerServiceModel owner;
+    private Set<PlayerServiceModel> players;
 
     public EventViewModel() {
     }
@@ -68,19 +71,19 @@ public class EventViewModel {
         this.game = game;
     }
 
-    public UserServiceModel getOwner() {
+    public PlayerServiceModel getOwner() {
         return owner;
     }
 
-    public void setOwner(UserServiceModel owner) {
+    public void setOwner(PlayerServiceModel owner) {
         this.owner = owner;
     }
 
-    public Set<UserServiceModel> getPlayers() {
+    public Set<PlayerServiceModel> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Set<UserServiceModel> players) {
+    public void setPlayers(Set<PlayerServiceModel> players) {
         this.players = players;
     }
 

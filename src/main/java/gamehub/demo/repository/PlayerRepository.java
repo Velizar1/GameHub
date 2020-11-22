@@ -1,6 +1,5 @@
 package gamehub.demo.repository;
 
-import gamehub.demo.model.entity.GameEvent;
 import gamehub.demo.model.entity.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface GameEventRepository extends JpaRepository<GameEvent,String> {
-    GameEvent findByOwner(Player player);
+public interface PlayerRepository extends JpaRepository<Player,String> {
+    Optional<Player> findByUsernameInGame(String username);
 }

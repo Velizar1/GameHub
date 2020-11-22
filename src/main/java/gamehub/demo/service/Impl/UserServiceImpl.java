@@ -2,6 +2,7 @@ package gamehub.demo.service.Impl;
 
 import gamehub.demo.model.entity.User;
 import gamehub.demo.model.service.UserServiceModel;
+import gamehub.demo.repository.PlayerRepository;
 import gamehub.demo.repository.UserRepository;
 import gamehub.demo.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -14,9 +15,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
+
     public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+
     }
 
     @Override

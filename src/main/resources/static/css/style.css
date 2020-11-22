@@ -49,14 +49,17 @@ form{
     border-radius: 12px;
     border: 2px solid ;
     background-color:  #0d162696;
-    height: 100%;
+    min-height: 30em;
+    padding: 2em;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-
+.form-event{
+    width: 75%;
+}
 .add-form{
     width: 50%;;
 }
@@ -73,7 +76,7 @@ form{
     color: white;
 }
 .detail{
-    height: 30em;
+    min-height: 30em;
     background-size:contain;
     background-repeat:no-repeat;
     background-size: 100% 100%;
@@ -93,6 +96,9 @@ form{
     width: 70%;
 }
 @media screen and (max-width: 361px) {
+    .form-event{
+        width: 100%;
+    }
     .outside-div{
         width: 90%;
     }
@@ -128,6 +134,9 @@ form{
     }
 }
 @media screen and (max-width: 800px) {
+    .form-event{
+        width: 100%;
+    }
     .outside-div{
         width: 90%;
     }

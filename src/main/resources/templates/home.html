@@ -41,7 +41,7 @@
             <img th:src="@{${e.getGame().imageUrl}}"
                  class="card-img-top" style="height: 200px;" alt="...">
             <div class="card-body">
-                <h5 th:text="|Owner ${e.getOwner().userName}|" class="card-title">Card title</h5>
+                <h5 th:text="|Owner's nick : ${e.getOwner().getUsernameInGame()}|" class="card-title">Card title</h5>
                 <p th:text="|Devision : ${e.getDevision()}|" class="card-text"></p>
                 <p th:text="|Players needed : ${e.getNumberOfPlayers()}|" class="card-text"></p>
                 <p th:text="|Starts on : ${e.getStartDate()}|" class="card-text"></p>

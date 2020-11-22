@@ -9,19 +9,10 @@ public class UserServiceModel extends BaseServiceModel {
     private String password;
     private String email;
     private Boolean deleted;
-    private Set<GameAddServiceModel> gameEvents;
 
     public UserServiceModel() {
-        gameEvents=new HashSet<>();
+
         this.deleted=false;
-    }
-
-    public Set<GameAddServiceModel> getGameEvents() {
-        return gameEvents;
-    }
-
-    public void setGameEvents(Set<GameAddServiceModel> gameEvents) {
-        this.gameEvents = gameEvents;
     }
 
     public String getUserName() {

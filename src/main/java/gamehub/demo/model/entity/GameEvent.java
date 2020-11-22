@@ -20,19 +20,19 @@ public class GameEvent extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Game game;
     @ManyToOne(fetch = FetchType.LAZY)
-    private User owner;
-    @ManyToMany(targetEntity = User.class,  fetch = FetchType.LAZY)
-    private Set<User> players;
+    private Player owner;
+    @ManyToMany(targetEntity = Player.class,  fetch = FetchType.LAZY)
+    private Set<Player> players;
 
     public GameEvent() {
-        players = new HashSet<User>();
+        players = new HashSet<Player>();
     }
 
-    public Set<User> getPlayers() {
+    public Set<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Set<User> players) {
+    public void setPlayers(Set<Player> players) {
         this.players = players;
     }
 
@@ -88,11 +88,11 @@ public class GameEvent extends BaseEntity {
         this.dueDate = dueDate;
     }
 
-    public User getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
-    public void setOwner(User user) {
+    public void setOwner(Player user) {
         this.owner = user;
     }
 }

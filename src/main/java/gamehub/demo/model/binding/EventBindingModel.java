@@ -1,6 +1,7 @@
 package gamehub.demo.model.binding;
 
 import gamehub.demo.model.service.GameServiceModel;
+import gamehub.demo.model.service.PlayerServiceModel;
 import gamehub.demo.model.service.UserServiceModel;
 
 import java.time.LocalDateTime;
@@ -14,8 +15,8 @@ public class EventBindingModel {
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
     private GameServiceModel game;
-    private UserServiceModel owner;
-    private Set<UserServiceModel> players;
+    private PlayerServiceModel owner;
+    private Set<PlayerServiceModel> players;
 
     public EventBindingModel() {
     }
@@ -68,19 +69,19 @@ public class EventBindingModel {
         this.game = game;
     }
 
-    public UserServiceModel getOwner() {
+    public PlayerServiceModel getOwner() {
         return owner;
     }
 
-    public void setOwner(UserServiceModel owner) {
+    public void setOwner(PlayerServiceModel owner) {
         this.owner = owner;
     }
 
-    public Set<UserServiceModel> getPlayers() {
+    public Set<PlayerServiceModel> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Set<UserServiceModel> players) {
+    public void setPlayers(Set<PlayerServiceModel> players) {
         this.players = players;
     }
 

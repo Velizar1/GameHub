@@ -13,14 +13,8 @@ public class User extends BaseEntity {
     private String email;
     private Boolean deleted;
 
-    @ManyToMany(mappedBy = "players", targetEntity = GameEvent.class, fetch = FetchType.LAZY)
-    private Set<GameEvent> gameEvents;
-
     public User() {
-        gameEvents=new HashSet<GameEvent>();
     }
-
-
 
     public String getUserName() {
         return userName;
@@ -47,14 +41,6 @@ public class User extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Set<GameEvent> getGameEvents() {
-        return gameEvents;
-    }
-
-    public void setGameEvents(Set<GameEvent> gameEvents) {
-        this.gameEvents = gameEvents;
     }
 
     @Column(name = "deleted", columnDefinition = "bit default 0")
