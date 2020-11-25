@@ -6,7 +6,7 @@ import gamehub.demo.model.service.GameAddServiceModel;
 import gamehub.demo.model.service.PlayerServiceModel;
 import gamehub.demo.model.service.UserServiceModel;
 import gamehub.demo.model.view.EventViewModel;
-import gamehub.demo.service.GameService;
+import gamehub.demo.service.GameEventService;
 import gamehub.demo.service.PlayerService;
 import gamehub.demo.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -19,16 +19,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("/game")
 public class GameEventController {
-    private final GameService gameService;
+    private final GameEventService gameEventService;
     private final PlayerService playerService;
     private final UserService userService;
     private final ModelMapper modelMapper;
 
-    public GameEventController(GameService gameService, PlayerService playerService, UserService userService, ModelMapper modelMapper) {
-        this.gameService = gameService;
+    public GameEventController(GameEventService gameEventService, PlayerService playerService, UserService userService, ModelMapper modelMapper) {
+        this.gameEventService = gameEventService;
         this.playerService = playerService;
         this.userService = userService;
         this.modelMapper = modelMapper;
@@ -57,7 +58,7 @@ public class GameEventController {
             return "redirect:add";
         }
         httpSession.setAttribute("usernameInGame",gameAddBindingModel.getUserName());
-        this.gameService.addEvent(this.modelMapper
+        this.gameEventService.addEvent(this.modelMapper
                 .map(gameAddBindingModel, GameAddServiceModel.class),httpSession);
         return "redirect:/home";
     }
@@ -67,15 +68,20 @@ public class GameEventController {
         if(httpSession.getAttribute("user")==null){
             return "redirect:/";
         }
-        model.addAttribute("event",this.gameService.findById(id));
+        EventViewModel event=this.gameEventService.findById(id);
+
+        model.addAttribute("event",event);
         return "event-detail";
     }
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") String id ){
+    public String delete(@RequestParam("id") String id ,HttpSession httpSession){
 
-        EventViewModel event=this.gameService.findById(id);
-        if(event!=null){
-            this.gameService.deleteEvent(event);
+        if(httpSession.getAttribute("user")==null){
+            return "redirect:/";
+        }
+        EventViewModel event=this.gameEventService.findById(id);
+        if(event!=null && event.getOwner().getUser().getUserName().equals(httpSession.getAttribute("username"))){
+            this.gameEventService.deleteEvent(event);
         }
         return "redirect:/home";
     }
@@ -84,14 +90,14 @@ public class GameEventController {
                          @RequestParam("id") String id,
                          HttpSession httpSession){
 
-        EventViewModel event=this.gameService.findById(id);
+        EventViewModel event=this.gameEventService.findById(id);
         UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("username")));
         PlayerServiceModel playerServiceModel=this.playerService
                 .findByUsername(eventUpdateBindingModel.getUserNick(),user,eventUpdateBindingModel.getUserNick());
 
         if(event!=null && playerServiceModel!=null){
 
-            this.gameService.updateRelations(this.modelMapper
+            this.gameEventService.updateRelations(this.modelMapper
             .map(event,GameAddServiceModel.class),playerServiceModel);
         }
         return "redirect:/game/detail/?id="+id;

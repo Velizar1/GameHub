@@ -30,8 +30,11 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(Model model,HttpSession httpSession){
 
+        if(httpSession.getAttribute("user")!=null){
+            return "redirect:/";
+        }
         if(model.getAttribute("userLoginBindingModel")==null){
             model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
         }
@@ -41,13 +44,14 @@ public class UserController {
     public String loginConfirm(@Valid @ModelAttribute("userLoginBindingModel") UserLoginBindingModel userLoginBindingModel,
                                BindingResult bindingResult, HttpSession httpSession,
                                RedirectAttributes redirectAttributes){
-        UserLoginBindingModel user=this.modelMapper
-        .map(this.userService.findByUsername(userLoginBindingModel.getUserName()),UserLoginBindingModel.class);
+
+        UserServiceModel user=this.userService.findByUsername(userLoginBindingModel.getUserName());
         if(bindingResult.hasErrors() || user==null|| !user.getPassword().equals(userLoginBindingModel.getPassword())){
             redirectAttributes.addFlashAttribute("userLoginBindingModel",userLoginBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",bindingResult);
             return "redirect:login";
         }
+        userLoginBindingModel=modelMapper.map(user,UserLoginBindingModel.class);
         httpSession.setAttribute("user",userLoginBindingModel);
         httpSession.setAttribute("username",userLoginBindingModel.getUserName());
         return "redirect:/home";
@@ -60,7 +64,10 @@ public class UserController {
 
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model,HttpSession httpSession){
+        if(httpSession.getAttribute("user")!=null){
+            return "redirect:/";
+        }
         if(model.getAttribute("userAddBindingModel")==null) {
             model.addAttribute("userAddBindingModel", new UserAddBindingModel());
         }

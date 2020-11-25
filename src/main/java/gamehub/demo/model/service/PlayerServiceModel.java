@@ -8,7 +8,7 @@ import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerServiceModel extends BaseServiceModel{
+public class PlayerServiceModel  extends BaseServiceModel implements Comparable<PlayerServiceModel>{
     private UserServiceModel user;
     private String usernameInGame;
     private Set<GameAddServiceModel> gameEvents;
@@ -39,5 +39,10 @@ public class PlayerServiceModel extends BaseServiceModel{
 
     public void setGameEvents(Set<GameAddServiceModel> gameEvents) {
         this.gameEvents = gameEvents;
+    }
+
+    @Override
+    public int compareTo(PlayerServiceModel o) {
+        return this.getUsernameInGame().compareTo(o.getUsernameInGame());
     }
 }

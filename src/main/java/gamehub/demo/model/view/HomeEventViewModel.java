@@ -1,27 +1,29 @@
 package gamehub.demo.model.view;
 
 import gamehub.demo.model.service.GameServiceModel;
-import gamehub.demo.model.service.PlayerServiceModel;
-import gamehub.demo.model.service.UserServiceModel;
-import gamehub.demo.repository.PlayerRepository;
-import gamehub.demo.service.PlayerService;
 
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.SortedSet;
 
-public class EventViewModel {
+public class HomeEventViewModel {
     private String id;
     private String description;
     private Integer numberOfPlayers;
     private String devision;
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
+    private String ownerName;
     private GameServiceModel game;
-    private PlayerServiceModel owner;
-    private SortedSet<PlayerServiceModel> players;
+    private Integer takenPlaces;
 
-    public EventViewModel() {
+    public HomeEventViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -72,28 +74,19 @@ public class EventViewModel {
         this.game = game;
     }
 
-    public PlayerServiceModel getOwner() {
-        return owner;
+    public String getOwnerName() {
+        return ownerName;
     }
 
-    public void setOwner(PlayerServiceModel owner) {
-        this.owner = owner;
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
-    public SortedSet<PlayerServiceModel> getPlayers() {
-        return players;
+    public Integer getTakenPlaces() {
+        return takenPlaces;
     }
 
-    public void setPlayers(SortedSet<PlayerServiceModel> players) {
-        this.players = players;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setTakenPlaces(Integer takenPlaces) {
+        this.takenPlaces = takenPlaces;
     }
 }
-

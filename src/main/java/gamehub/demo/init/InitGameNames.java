@@ -1,20 +1,20 @@
 package gamehub.demo.init;
 
-import gamehub.demo.service.GameService;
+import gamehub.demo.service.GameEventService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InitGameNames implements CommandLineRunner {
 
-    private final GameService gameService;
+    private final GameEventService gameEventService;
 
-    public InitGameNames(GameService gameService) {
-        this.gameService = gameService;
+    public InitGameNames(GameEventService gameEventService) {
+        this.gameEventService = gameEventService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        this.gameService.InitGames();
+        this.gameEventService.InitGames();
     }
 }
