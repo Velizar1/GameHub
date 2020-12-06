@@ -1,5 +1,4 @@
 package gamehub.demo.model.entity;
-import java.util.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -10,6 +9,8 @@ public class User extends BaseEntity {
     @Column(name = "username",nullable = false,unique = true)
     private String userName;
     private String password;
+    @Email
+    @Column(unique = true)
     private String email;
     private Boolean deleted;
 
@@ -34,7 +35,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @Email
+
     public String getEmail() {
         return email;
     }

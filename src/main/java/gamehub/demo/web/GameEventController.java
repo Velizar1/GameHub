@@ -1,5 +1,6 @@
 package gamehub.demo.web;
 
+import gamehub.demo.error.GameEventDetailException;
 import gamehub.demo.model.binding.EventUpdateBindingModel;
 import gamehub.demo.model.binding.GameAddBindingModel;
 import gamehub.demo.model.service.GameAddServiceModel;
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
+//TODO fix game-detail pages in html(session err)
 
 @Controller
 @RequestMapping("/game")
@@ -36,10 +37,8 @@ public class GameEventController {
     }
 
     @GetMapping("/add")
-    public String addEvent(Model model,HttpSession httpSession){
-        if(httpSession.getAttribute("user")==null){
-            return "redirect:/";
-        }
+    public String addEvent(Model model){
+
         if(model.getAttribute("gameAddBindingModel")==null){
             model.addAttribute("gameAddBindingModel",new GameAddBindingModel());
         }
@@ -63,42 +62,50 @@ public class GameEventController {
         return "redirect:/home";
     }
     @GetMapping("/detail")
-    public String detail(@RequestParam("id") String id, Model model ,HttpSession httpSession){
+    public String detail(@RequestParam("id") String id, Model model){
 
-        if(httpSession.getAttribute("user")==null){
-            return "redirect:/";
-        }
+
         EventViewModel event=this.gameEventService.findById(id);
 
+        if(event ==null){
+            throw new GameEventDetailException("Event was not found.");
+            //return "redirect:/game-crash/error";
+        }
         model.addAttribute("event",event);
         return "event-detail";
     }
+
     @GetMapping("/delete")
     public String delete(@RequestParam("id") String id ,HttpSession httpSession){
 
-        if(httpSession.getAttribute("user")==null){
-            return "redirect:/";
-        }
         EventViewModel event=this.gameEventService.findById(id);
-        if(event!=null && event.getOwner().getUser().getUserName().equals(httpSession.getAttribute("username"))){
+        if(event!=null && event.getOwner().getUser().getUserName().equals(httpSession.getAttribute("user"))){
             this.gameEventService.deleteEvent(event);
         }
         return "redirect:/home";
     }
     @PostMapping("/add/player")
-    public String delete(@ModelAttribute("eventUpdateBindingModel") EventUpdateBindingModel eventUpdateBindingModel,
-                         @RequestParam("id") String id,
+    public String addPlayer(@ModelAttribute("eventUpdateBindingModel") EventUpdateBindingModel eventUpdateBindingModel,
+                         @RequestParam("id") String id ,RedirectAttributes attributes,
                          HttpSession httpSession){
 
+        if(eventUpdateBindingModel.getUserNick().length()>25){
+            attributes.addFlashAttribute("length","Username is too long!");
+            return "redirect:/game/detail/?id="+id;
+        }
+
         EventViewModel event=this.gameEventService.findById(id);
-        UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("username")));
+        UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("user")));
         PlayerServiceModel playerServiceModel=this.playerService
-                .findByUsername(eventUpdateBindingModel.getUserNick(),user,eventUpdateBindingModel.getUserNick());
+                .findByUsernameAndUser(user,eventUpdateBindingModel.getUserNick());
+
 
         if(event!=null && playerServiceModel!=null){
 
-            this.gameEventService.updateRelations(this.modelMapper
-            .map(event,GameAddServiceModel.class),playerServiceModel);
+           if(!this.gameEventService.updateRelations(this.modelMapper
+            .map(event,GameAddServiceModel.class),playerServiceModel)){
+               attributes.addFlashAttribute("taken","Username is already taken for this event!");
+           }
         }
         return "redirect:/game/detail/?id="+id;
     }

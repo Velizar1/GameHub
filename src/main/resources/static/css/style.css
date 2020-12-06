@@ -95,7 +95,17 @@ form{
 .outside-div{
     width: 70%;
 }
+#err-text{
+    font-size: 40px;
+    padding: 10px;border-radius: 12px;
+    background-color: #0d1626be ;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
 @media screen and (max-width: 361px) {
+    .add-form{
+        width: 90%;
+    }
     .form-event{
         width: 100%;
     }
@@ -134,6 +144,9 @@ form{
     }
 }
 @media screen and (max-width: 800px) {
+    .add-form{
+        width: 90%;
+    }
     .form-event{
         width: 100%;
     }

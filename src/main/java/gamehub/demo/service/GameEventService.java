@@ -12,14 +12,12 @@ public interface GameEventService {
 
     void addEvent(GameAddServiceModel map, HttpSession httpSession);
 
-    void saveEvent(GameAddServiceModel event, HttpSession httpSession);
-
     List<EventViewModel> findAll();
 
     List<EventViewModel> findAllByGame(GameServiceModel game);
     EventViewModel findById(String id);
 
-    void updateRelations(GameAddServiceModel gameAddServiceModel, PlayerServiceModel player);
+    boolean updateRelations(GameAddServiceModel gameAddServiceModel, PlayerServiceModel player);
 
     void deleteEvent(EventViewModel event);
 }

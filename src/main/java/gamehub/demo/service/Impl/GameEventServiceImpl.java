@@ -51,15 +51,13 @@ public class GameEventServiceImpl implements GameEventService {
         }
     }
 
-
     @Override
     public void addEvent(GameAddServiceModel gameAddServiceModel, HttpSession httpSession) {
-        UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("username")));
+        UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("user")));
         PlayerServiceModel player = null;
 
         if (user != null) {
-            player = this.playerService.findByUsername(String.valueOf(httpSession.getAttribute("usernameInGame")),
-                    user, String.valueOf(httpSession.getAttribute("usernameInGame")));
+            player = this.playerService.findByUsernameAndUser(user, String.valueOf(httpSession.getAttribute("usernameInGame")));
         } else return;
 
         GameServiceModel gameServiceModel =
@@ -77,28 +75,23 @@ public class GameEventServiceImpl implements GameEventService {
     }
 
     @Override
-    public void saveEvent(GameAddServiceModel gameAddServiceModel, HttpSession httpSession) {
-        UserServiceModel user = this.userService.findByUsername(String.valueOf(httpSession.getAttribute("username")));
-        PlayerServiceModel player = null;
+    public boolean updateRelations(GameAddServiceModel gameAddServiceModel, PlayerServiceModel player) {
+        if(gameAddServiceModel.getPlayers().stream()
+                .filter(x->x.getUsernameInGame().equals(player.getUsernameInGame()))
+                .count()==0){
+            gameAddServiceModel.getPlayers().add(player);
+            GameAddServiceModel gameAddServiceModel1 = this.modelMapper
+                    .map(this.gameEventRepository.saveAndFlush(this.modelMapper
+                            .map(gameAddServiceModel, GameEvent.class)), GameAddServiceModel.class);
 
-        if (user != null) {
-            player = this.playerService.findByUsername(String.valueOf(httpSession.getAttribute("usernameInGame")),
-                    user, String.valueOf(httpSession.getAttribute("usernameInGame")));
-        } else return;
+            player.getGameEvents().add(gameAddServiceModel1);
+            this.playerService.addPlayer(player);
+            return true;
+        }
 
-        updateRelations(gameAddServiceModel, player);
-    }
-    @Override
-    public void updateRelations(GameAddServiceModel gameAddServiceModel, PlayerServiceModel player) {
-        gameAddServiceModel.getPlayers().add(player);
-        GameAddServiceModel gameAddServiceModel1 = this.modelMapper
-                .map(this.gameEventRepository.saveAndFlush(this.modelMapper
-                        .map(gameAddServiceModel, GameEvent.class)), GameAddServiceModel.class);
-        gameAddServiceModel = this.modelMapper.map(this.gameEventRepository
-                .findById(gameAddServiceModel1.getId()), GameAddServiceModel.class);
-
-        player.getGameEvents().add(gameAddServiceModel);
-        this.playerService.addPlayer(player);
+       /* gameAddServiceModel = this.modelMapper.map(this.gameEventRepository
+                .findById(gameAddServiceModel1.getId()), GameAddServiceModel.class);*/
+        return false;
     }
 
     @Override

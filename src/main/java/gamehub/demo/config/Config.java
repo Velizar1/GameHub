@@ -1,5 +1,6 @@
 package gamehub.demo.config;
 
+import gamehub.demo.mapper.UserMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,4 +11,6 @@ public class Config {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
+
 }

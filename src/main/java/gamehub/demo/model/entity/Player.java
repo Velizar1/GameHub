@@ -1,5 +1,7 @@
 package gamehub.demo.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +11,9 @@ import java.util.Set;
 public class Player extends BaseEntity {
     @ManyToOne()
     private  User user;
-    @Column(name = "username",unique = true,nullable = false)
+    @Column(name = "username",nullable = false)
     private  String usernameInGame;
+    @JsonIgnore
     @ManyToMany(mappedBy = "players", targetEntity = GameEvent.class, fetch = FetchType.LAZY)
     private Set<GameEvent> gameEvents;
 

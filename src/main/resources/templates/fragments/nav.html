@@ -1,11 +1,11 @@
 <th:block>
     <div class="float-left" style="float:left;display: inline-block">
-        <a style="color:rgb(255, 255, 255);padding: 0;margin-left: 10%" th:href="@{/}" class="nav-link text-light"><img
+        <a style="color:rgb(255, 255, 255);padding: 0;margin-left: 10%" th:href="@{/home}" class="nav-link text-light"><img
                 style="height: 2em;width: 9em" src="/img/output-onlinepngtools.png"></a>
     </div>
     <ul class="nav justify-content-end">
 
-        <th:block th:if="${session.isEmpty()}">
+        <th:block sec:authorize="isAnonymous()" >
             <li class="nav-item">
                 <a class="nav-link" style="color:rgb(255, 255, 255);" th:href="@{/user/login}">Login</a>
             </li>
@@ -13,7 +13,7 @@
                 <a class="nav-link" style="color:rgb(255, 255, 255);" th:href="@{/user/register}">Register</a>
             </li>
         </th:block>
-        <th:block th:unless="${session.isEmpty()}">
+        <th:block  sec:authorize="isAuthenticated()">
             <li class="nav-item">
                 <a class="nav-link active" style="color:rgb(255, 255, 255);" th:href="@{/game/add}">Add Event</a>
             </li>

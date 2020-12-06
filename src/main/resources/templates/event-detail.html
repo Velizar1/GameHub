@@ -2,18 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="sticky-footer.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/navbars/">
-
+    <th:block th:include="~{/fragments/head}"></th:block>
     <title>Add Event</title>
 </head>
 
@@ -44,10 +33,13 @@
                     </ul>
 
                 </div>
-                <div style="position:relative;"  th:if="*{(getNumberOfPlayers() - getPlayers().size()) > 0} "
-                     th:unless="${session.user.getUserName() == event.getOwner().getUser().getUserName()}" id="last">
+                <div style="position:relative;"  th:if="*{(getNumberOfPlayers() +1 - getPlayers().size()) > 0} "
+                     th:unless="${session.user == event.getOwner().getUser().getUserName()}" id="last">
 
                     <form class="mt-5 text-left form-event" th:action="@{/game/add/player/(id =*{getId()})}" method="POST">
+                        <div th:if="${taken!=null}">
+                            <small th:text="${taken}" style="color: #ff0000;font-size:15px;margin-left: 5%"></small>
+                        </div>
                         <div class="text-left">
                             <p style="color: lawngreen; margin-left: 5%" class="card-text mb-3">Your nick name :</p>
                         </div>
@@ -55,11 +47,14 @@
                                class="form-control is-invalid d-inline-block"
                                aria-describedby="validatedInputGroupPrepend"
                                required>
+                        <div th:if="${length!=null}">
+                            <small  th:text="${length}" style="color: #ff0000;font-size:15px;margin-left: 5%">Looks good!</small>
+                        </div>
                         <button  class="btn btn-primary border-0 mb-1 bg-dark mr-2 btn-lg ml-3" type="submit">I'm in</button>
                     </form>
                 </div>
                 <div style="position:relative; "
-                     th:if="${session.user.getUserName() == event.getOwner().getUser().getUserName()}" id="last">
+                     th:if="${session.user == event.getOwner().getUser().getUserName()}" id="last">
                     <a th:href="@{/game/delete/(id =*{getId()})}" class="btn btn-primary border-0 bg-danger btn-lg mt-5 ml-3"
                        style="padding: 0.23em;margin-bottom: 4.5px">Delete</a>
                 </div>
