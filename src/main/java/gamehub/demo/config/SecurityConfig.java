@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home**").authenticated()
                 .antMatchers("/game-crash").authenticated()
                 .antMatchers("/resource**").authenticated()
+                .antMatchers("/css/**", "/js/**", "/img/**","/uploads/**","**/favicon.ico").permitAll()
+                .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/user/login")
@@ -42,11 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureForwardUrl("/user/login?error=bad_credentials")
                     .successForwardUrl("/access-denied")
                 .and()
-                    .logout()
+                    .logout().permitAll()
                     .logoutUrl("/user/logout")
                     .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
-                 .and().csrf().disable()
+                .and()
                     .exceptionHandling()
                     .accessDeniedPage("/access-denied");
     }

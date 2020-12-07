@@ -31,7 +31,6 @@ body {
 }
 
 form{
-
     margin-top: 2%;
     width: 25em;
     text-align: center;
@@ -40,6 +39,22 @@ form{
     border-radius: 12px;
     border: 2px solid ;
     background-color: #0d1626be;
+}
+#logout{
+    display: inline-block;
+    margin:0;
+    width: auto;
+    text-align: center;
+    padding: 0;
+    border: none;
+    background-color:#a000008f;
+}
+#logout:hover{
+    background-color: rgba(253, 0, 0, 0.56);
+}
+#logout-button{
+    background-color: rgba(26, 3, 29, -1);
+    border: none;
 }
 *{
     padding: 0;

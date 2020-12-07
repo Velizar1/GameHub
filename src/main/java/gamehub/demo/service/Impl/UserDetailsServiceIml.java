@@ -29,10 +29,10 @@ public class UserDetailsServiceIml implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         UserServiceModel user=userService.findByUsername(username);
-        User mapedUser = map(user);
-        if(mapedUser==null){
+        if(user==null){
             throw new UsernameNotFoundException("No such user "+username);
         }
+        User mapedUser = map(user);
         httpSession.setAttribute("user",username);
         return  mapedUser;
     }

@@ -9,22 +9,28 @@
 </head>
 
 <body>
-    <nav class="p-2" style="background-color:#1a031d62;">
-        <th:block th:include="~{/fragments/nav}"></th:block>
-    </nav>
+<nav class="p-2" style="background-color:#1a031d62;">
+    <th:block th:include="~{/fragments/nav}"></th:block>
+</nav>
 
-    <div class="jumbotron w-75 main-div" style="background-color:#08101dce;">
-        <h1 class="display-4">Hello, gamers!</h1>
-        <p class="lead">This is the place where you can find your dream team.</p>
-        <hr class="my-4">
+<div class="jumbotron w-75 main-div" style="background-color:#08101dce;">
+    <h1 class="display-4">Hello, gamer!</h1>
+    <p class="lead">This is the place where you can find your dream team.</p>
+    <hr class="my-4">
+    <th:block sec:authorize="isAnonymous()">
         <p>But first, you need to navigate to one of the following pages.</p>
         <a class="btn btn-primary border-0 bg-dark btn-lg" href="/user/login" role="button">Login</a>
         <a class="btn btn-primary border-0 bg-dark btn-lg" href="/user/register" role="button">Register</a>
-    </div>
+    </th:block>
+    <th:block sec:authorize="isAuthenticated()">
+        <p>Dont waste time, check the events!</p>
+        <a class="btn btn-primary border-0 bg-dark btn-lg" style="color: lawngreen" href="/home" role="button">See Events</a>
+    </th:block>
+</div>
 
-    <footer class="footer p-3 text-center" style="background-color:#1a031d38;">
-        <th:block th:include="~{/fragments/footer}"></th:block>
-    </footer>
+<footer class="footer p-3 text-center" style="background-color:#1a031d38;">
+    <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
 </body>
 
 </html>

@@ -23,7 +23,7 @@
                         <small th:text="${#strings.replace(error,'_',' ')}" style="color: #ff0000;font-size:20px"></small>
                     </div>
                     <label style="color: white;" for="validationServer01">UserName</label>
-                    <input th:field="*{userName}" type="text" name="userName" class="form-control " id="validationServer01" value="Mark" required>
+                    <input th:field="*{userName}" type="text" name="userName" class="form-control " id="validationServer01" th:value="*{userName}" required>
                     <div style="color: white;" class="valid-feedback">
                         <small th:each="e : ${#fields.errors('userName')}" th:text="${e}"
                                style="color: #ff0000;font-size:15px">Looks good!</small>

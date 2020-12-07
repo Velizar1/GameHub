@@ -11,6 +11,7 @@ import gamehub.demo.service.GameEventService;
 import gamehub.demo.service.PlayerService;
 import gamehub.demo.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,6 +62,7 @@ public class GameEventController {
                 .map(gameAddBindingModel, GameAddServiceModel.class),httpSession);
         return "redirect:/home";
     }
+
     @GetMapping("/detail")
     public String detail(@RequestParam("id") String id, Model model){
 
