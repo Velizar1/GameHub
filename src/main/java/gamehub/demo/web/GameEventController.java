@@ -11,7 +11,6 @@ import gamehub.demo.service.GameEventService;
 import gamehub.demo.service.PlayerService;
 import gamehub.demo.service.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,6 +59,7 @@ public class GameEventController {
         httpSession.setAttribute("usernameInGame",gameAddBindingModel.getUserName());
         this.gameEventService.addEvent(this.modelMapper
                 .map(gameAddBindingModel, GameAddServiceModel.class),httpSession);
+        gameEventService.updateCacheEvents();
         return "redirect:/home";
     }
 
@@ -83,6 +83,7 @@ public class GameEventController {
         EventViewModel event=this.gameEventService.findById(id);
         if(event!=null && event.getOwner().getUser().getUserName().equals(httpSession.getAttribute("user"))){
             this.gameEventService.deleteEvent(event);
+            gameEventService.updateCacheEvents();
         }
         return "redirect:/home";
     }
@@ -108,6 +109,7 @@ public class GameEventController {
             .map(event,GameAddServiceModel.class),playerServiceModel)){
                attributes.addFlashAttribute("taken","Username is already taken for this event!");
            }
+            gameEventService.updateCacheEvents();
         }
         return "redirect:/game/detail/?id="+id;
     }

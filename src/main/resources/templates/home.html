@@ -12,16 +12,22 @@
 </nav>
 <main class="text-center">
 
-    <div id="pool" style="margin-bottom: 100px;"
+    <div id="pool" style="margin-bottom: 100px;width: 80%"
          th:object="${events}" class="btn-container-style text-center mt-5 d-inline-block modal-dialog-scrollable">
 
 
         <div class=" w-100 text-center ">
-            <select  onchange="reload(this.value)" class=" browser-default " style="width: 15em;" aria-placeholder="Filter"
+
+            <div id="info-label">
+                <p style="color: greenyellow;font-size: 30px;" class="text-light"
+                   th:text="|Most popular game : ${mostPlayed}|"></p>
+            </div>
+            <select onchange="reload(this.value)" class="browser-default " style="width: 15em;"
+                    aria-placeholder="Filter"
                     id="category"
                     name="category">
                 <option value="All">All</option>
-                <option  th:each="o : ${T(gamehub.demo.model.entity.GameName).values()}"
+                <option th:each="o : ${T(gamehub.demo.model.entity.GameName).values()}"
                         th:text="${#strings.capitalize(#strings.toLowerCase(o))}"
                         th:value="${#strings.capitalize(o.name())}">One
                 </option>
@@ -55,15 +61,15 @@
 </body>
 <script>
     function reload(gameName) {
-        fetch('http://localhost:8000/resource/?game='+gameName, {
+        fetch('http://localhost:8000/resource/?game=' + gameName, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         }).then(x => x.json()).then(x => {
             var container = document.getElementById("container");
-            container.innerHTML="";
-            for (var i=0;i<x.length;i++) {
+            container.innerHTML = "";
+            for (var i = 0; i < x.length; i++) {
 
                 var element = `<div class=" d-inline-block text-left mt-5 container-style" id="event-div" style="width: 18rem;">
             <img src="${x[i].game.imageUrl}"
@@ -83,6 +89,7 @@
 
         })
     }
+
     reload("All");
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

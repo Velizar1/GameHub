@@ -46,6 +46,10 @@
                     <input type="password" name="password" class="form-control" id="validationServer02"
                          required>
 
+                    <div class="valid-feedback">
+                        <small  th:each="e : ${#fields.errors('password')}" th:text="${e}"
+                                style="color: red;font-size:15px">Looks good!</small>
+                    </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label style="color: white;" for="validationServer02">Confirm Password</label>

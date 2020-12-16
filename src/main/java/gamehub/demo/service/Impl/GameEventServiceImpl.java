@@ -14,6 +14,11 @@ import gamehub.demo.service.GameEventService;
 import gamehub.demo.service.PlayerService;
 import gamehub.demo.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -30,6 +35,7 @@ public class GameEventServiceImpl implements GameEventService {
     private final ModelMapper modelMapper;
     private final GameEventRepository gameEventRepository;
     private final PlayerService playerService;
+    private final Logger LOGGER= LoggerFactory.getLogger(GameEventServiceImpl.class);
 
     public GameEventServiceImpl(UserService userService, GameRepository gameService, ModelMapper modelMapper, GameEventRepository gameEventRepository, PlayerService playerService) {
         this.userService = userService;
@@ -94,8 +100,11 @@ public class GameEventServiceImpl implements GameEventService {
         return false;
     }
 
+
     @Override
+    @Cacheable("events")
     public List<EventViewModel> findAll() {
+        LOGGER.info("cached events");
         return this.gameEventRepository
                 .findAll()
                 .stream()
@@ -103,6 +112,12 @@ public class GameEventServiceImpl implements GameEventService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @CachePut("events")
+    public List<EventViewModel> updateCacheEvents(){
+        LOGGER.info("updated cached");
+        return findAll();
+    }
     @Override
     public List<EventViewModel> findAllByGame(GameServiceModel game) {
         return this.gameEventRepository.findAllByGame(this.modelMapper
@@ -118,6 +133,13 @@ public class GameEventServiceImpl implements GameEventService {
                 .map(x -> this.modelMapper.map(x, EventViewModel.class))
                 .orElse(null);
 
+    }
+    @Override
+    public GameServiceModel mostPlayedGame() {
+
+        return gameEventRepository.getMostPlayedGame(PageRequest.of(0,1)).get(0)
+                .map(g->this.modelMapper.map(g,GameServiceModel.class))
+                .orElse(null);
     }
 
     @Override

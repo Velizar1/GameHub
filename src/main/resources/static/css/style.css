@@ -22,8 +22,8 @@ body {
     min-height: 2em;
 }
 .container-style{
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-right: 4%;
+    margin-left: 4%;
     width: 70%;
     color: white;
     border-radius: 12px;
@@ -67,6 +67,17 @@ form{
     min-height: 30em;
     padding: 2em;
 }
+#info-label{
+    position: relative;
+    border-radius: 12px;
+    border: 2px solid ;
+    background-color:  #0d162696;
+    margin-bottom: 2em;
+    width: 60%;
+    left: 20%;
+    padding-top: 0.7em;
+
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -95,8 +106,7 @@ form{
     background-size:contain;
     background-repeat:no-repeat;
     background-size: 100% 100%;
-    width: 60%;
-
+    width: 70%;
 }
 #username{
     width: 50%;
@@ -118,6 +128,10 @@ form{
     font-family: 'Courier New', Courier, monospace;
 }
 @media screen and (max-width: 361px) {
+    #info-label{
+        width: 100%;
+        left: 0;
+    }
     .add-form{
         width: 90%;
     }
@@ -159,6 +173,10 @@ form{
     }
 }
 @media screen and (max-width: 800px) {
+    #info-label{
+        width: 100%;
+        left: 0;
+    }
     .add-form{
         width: 90%;
     }

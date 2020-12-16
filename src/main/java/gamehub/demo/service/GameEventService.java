@@ -15,8 +15,11 @@ public interface GameEventService {
     List<EventViewModel> findAll();
 
     List<EventViewModel> findAllByGame(GameServiceModel game);
+
+    List<EventViewModel> updateCacheEvents();
     EventViewModel findById(String id);
 
+    GameServiceModel mostPlayedGame();
     boolean updateRelations(GameAddServiceModel gameAddServiceModel, PlayerServiceModel player);
 
     void deleteEvent(EventViewModel event);

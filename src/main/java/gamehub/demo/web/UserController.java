@@ -51,16 +51,13 @@ public class UserController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",bindingResult);
             return "redirect:login";
         }
-        //userLoginBindingModel=modelMapper.map(user,UserLoginBindingModel.class);
-        //* httpSession.setAttribute("user",userLoginBindingModel);
+
         return "redirect:/home";
     }
 
     @GetMapping("/register")
-    public String register(Model model,HttpSession httpSession){
-       /* if(httpSession.getAttribute("user")!=null){
-            return "redirect:/";
-        }*/
+    public String register(Model model){
+
         if(model.getAttribute("userAddBindingModel")==null) {
             model.addAttribute("userAddBindingModel", new UserAddBindingModel());
         }
@@ -70,7 +67,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerConfirm(@Valid @ModelAttribute("userAddBindingModel") UserAddBindingModel userAddBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()||!userAddBindingModel.getPassword().equals(userAddBindingModel.getConfirmPassword())){
+        if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("userAddBindingModel",userAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userAddBindingModel",bindingResult);
             return "redirect:register";
