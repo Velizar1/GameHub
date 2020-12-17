@@ -12,6 +12,6 @@ public interface UserMapper {
 
     @Mapping(source = "userName", target = "userName")
     User userServiceModelToEntity(UserServiceModel model);
-
+    @Mapping(source = "userName", target = "userName")
     UserServiceModel userEntityToServiceModel(User user);
 }

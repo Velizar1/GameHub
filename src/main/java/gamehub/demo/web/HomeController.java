@@ -8,6 +8,7 @@ import gamehub.demo.service.GameService;
 import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,7 @@ public class HomeController {
         return "index";
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @Secured("USER")
     @GetMapping("/home")
     public String homePage(Model model){
         List <EventBindingModel> events = this.gameEventService.findAll().stream()
