@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0542ab6c-2510-4854-b828-57e35a000843" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/GamehubApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/commons/validator/FieldMathValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/commons/validator/FiledMatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/config/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/config/PasswordConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/error/GameEventDetailException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/init/InitGameNames.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/binding/EventBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/binding/EventUpdateBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/binding/GameAddBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/binding/UserAddBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/binding/UserLoginBindingModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/GameEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/GameName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/service/BaseServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/service/GameAddServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/service/GameServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/service/PlayerServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/service/UserServiceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/view/EventViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/model/view/HomeEventViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/repository/GameEventRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/repository/GameRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/repository/PlayerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/GameEventService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/GameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/Impl/GameEventServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/Impl/GameServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/Impl/PlayerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/Impl/UserDetailsServiceIml.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/Impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/PlayerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/GameEventController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/ViewRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/err/ErrorHandlerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/err/GameEventErrorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gamehub/demo/web/err/UserErrorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/register.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/favicon-new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/output-onlinepngtools.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/add-event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/add-event2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/event-detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/game-event-err.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gamehub/demo/GamehubApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gamehub/demo/integration/home/HomeControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gamehub/demo/unit/user/UserServiceTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ma49rNMSNOXu0zQWi52rITs4HU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GameHub" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0542ab6c-2510-4854-b828-57e35a000843" name="Default Changelist" comment="" />
+      <created>1609718222469</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609718222469</updated>
+      <workItem from="1609718225229" duration="468000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+
+    <title>Game Event</title>
+</head>
+<body>
+<nav class="p-2" style="background-color:#1a031d62;">
+    <th:block th:include="~{/fragments/nav}"></th:block>
+</nav>
+<div class="text-center" style="margin-top: 10em">
+    <span id="err-text" th:text="${err}"></span>
+</div>
+<footer class="footer p-3 text-center" style="background-color:#1a031d38;">
+    <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>
