@@ -137,9 +137,17 @@ public class GameEventServiceImpl implements GameEventService {
     @Override
     public GameServiceModel mostPlayedGame() {
 
-        return gameEventRepository.getMostPlayedGame(PageRequest.of(0,1)).get(0)
-                .map(g->this.modelMapper.map(g,GameServiceModel.class))
-                .orElse(null);
+        try {
+            return gameEventRepository.getMostPlayedGame(PageRequest.of(0,1)).get(0)
+                    .map(g->this.modelMapper.map(g,GameServiceModel.class))
+                    .orElse(null);
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+        finally {
+            return null;
+        }
+
     }
 
     @Override

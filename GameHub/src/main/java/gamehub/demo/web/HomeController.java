@@ -50,6 +50,8 @@ public class HomeController {
         GameServiceModel mostPlayed=this.gameEventService.mostPlayedGame();
         if(mostPlayed!=null) {
             model.addAttribute("mostPlayed",mostPlayed.getGameName().name());
+        }else{
+            model.addAttribute("mostPlayed","");
         }
         model.addAttribute("events",events);
         return "home";

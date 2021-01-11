@@ -4,10 +4,12 @@ import gamehub.demo.model.service.UserServiceModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.context.annotation.Bean;
 
 
 @Mapper
 public interface UserMapper {
+
     UserMapper INSTANCE= Mappers.getMapper(UserMapper.class);
 
     @Mapping(source = "userName", target = "userName")

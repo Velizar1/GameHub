@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
                 .orElse(null);
         if(userByEmail==null&&userByName==null){
               this.userRepository
-                    .save(UserMapper.INSTANCE.userServiceModelToEntity(user));
+                    .save(this.modelMapper.map(user,User.class));
               return null;
         }
         return user;
